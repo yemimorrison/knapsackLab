@@ -1,12 +1,20 @@
 Package: knapsackLab
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Title: Knapsack Algorithms
+Version: 0.1.0
+Author: 
+    c(person("Olayemi", "Morrison", "olamo208@student.liu.se", role = c("aut","cre"), comment = c(LiUID = "olamo208")), person("Daisuke", "Yamashita", "ronss490@student.liu.se", , role = c("aut"), comment = c(LiUID1 = "ronss490")))
+Maintainer: Olayemi Morrison <olamo208@student.liu.se>
+Description: This package studies the effects of different algorithms used in solving the knapsack problem.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

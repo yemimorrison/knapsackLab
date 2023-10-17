@@ -1,0 +1,149 @@
+---
+title: "knapsackLab"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{knapsackLab}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(knapsackLab)
+library(parallel)
+library(utils)
+```
+
+# Introduction
+
+The Knapsack Solver package provides a set of functions for solving various knapsack problems using different algorithms. This vignette serves as a guide to the package's functions and their usage.
+
+# Installation
+
+To install the Knapsack package, use the following command:
+```{r message=FALSE, warning=FALSE}
+
+#install_github("yemimorrison/knapsackLab")
+
+```
+
+# Function Overview
+## brute_force_knapsack
+
+The brute_force_knapsack function solves the knapsack problem using a brute-force algorithm.
+
+### Parameters
+
+    x: A dataframe called knapsack_objects with items containing two columns: 'v' for values and 'w' for weights.
+    W: A numeric variable representing the size of the knapsack.
+    parallel: A logical variable (TRUE or FALSE) to enable parallelization. Default is FALSE.
+
+## Usage
+
+To use the brute_force_knapsack function, provide a dataframe x and the knapsack size W. You can also enable parallelization using the parallel parameter.
+
+## Example:
+
+```{r message=FALSE, warning=FALSE}
+
+brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500, parallel = FALSE)
+
+```
+
+
+## Details
+
+This function employs a brute-force algorithm to find the optimal combination of items within the knapsack's weight limit.
+We also check the time taken to run the algorithm for 16 objects. 
+
+```{r message=FALSE, warning=FALSE}
+
+#Question: How much time does it take to run the algorithm for n = 16 objects?
+
+system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500,parallel=FALSE))
+system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500,parallel=TRUE))
+
+```
+
+## knapsack_dynamic
+
+The knapsack_dynamic function solves the knapsack problem using dynamic programming.
+
+### Parameters
+
+    x: A dataframe called knapsack_objects with items containing two columns: 'v' for values and 'w' for weights.
+    W: A numeric variable representing the size of the knapsack.
+
+## Usage
+
+To use the knapsack_dynamic function, provide a dataframe x and the knapsack size W.
+
+### Example:
+
+```{r message=FALSE, warning=FALSE}
+
+knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500)
+
+```
+
+
+## Details
+
+This function utilizes dynamic programming to find the optimal combination of items within the knapsack's weight limit.
+
+```{r message=FALSE, warning=FALSE}
+
+#Question: How much time does it take to run the algorithm for n = 500 objects?
+
+system.time(knapsack_dynamic(knapsack_objects[1:500,], W = 3500))
+
+```
+
+## greedy_knapsack
+
+The greedy_knapsack function solves the knapsack problem using a greedy algorithm.
+
+### Parameters
+
+    x: A dataframe called knapsack_objects with items containing two columns: 'v' for values and 'w' for weights.
+    W: A numeric variable representing the size of the knapsack.
+
+## Usage
+
+To use the greedy_knapsack function, provide a dataframe x and the knapsack size W.
+
+Example:
+
+```{r message=FALSE, warning=FALSE}
+
+greedy_knapsack(x = knapsack_objects[1:8,], W = 3500)
+
+```
+
+## Details
+
+This function employs a greedy algorithm to find a near-optimal combination of items within the knapsack's weight limit.
+
+```{r message=FALSE, warning=FALSE}
+
+#Question: How much time does it take to run the algorithm for n = 1000000 objects?
+
+set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
+n <- 1000000
+
+knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE), v=runif(n = n, 0, 10000))
+
+#Run the code below to check the answer:
+system.time(greedy_knapsack(knapsack_objects[1:1000000,], W = 3500))
+
+```
+
+# Conclusion
+
+This vignette concludes the documentation for the Knapsack package. The functions provided can help solve various knapsack problems efficiently using different algorithms, and also check the time taken to execute each function.
