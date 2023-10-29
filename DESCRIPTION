@@ -6,6 +6,9 @@ Author:
 Maintainer: Olayemi Morrison <olamo208@student.liu.se>
 Description: This package studies the effects of different algorithms used in solving the knapsack problem.
 License: MIT + file LICENSE
+Imports: 
+  parallel,
+  doParallel
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

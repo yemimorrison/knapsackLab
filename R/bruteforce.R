@@ -3,6 +3,8 @@
 #' @param W a numeric variable which represents the size of the knapsack
 #' @param parallel a variable with boolean values (TRUE or FALSE). If set to true, the function should parallelize.
 #' @return A list with two elements: the maximum value and a vector of selected items.
+#' @import parallel
+#' @import doParallel
 #' @importFrom utils combn
 #' 
 #' @export
